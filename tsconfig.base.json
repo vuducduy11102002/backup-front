@@ -1,0 +1,27 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@env/*": ["environments/*"],
+      "@hospital/libs/home-page": ["libs/home-page/src/index.ts"],
+      "@hospital/libs/services": ["libs/services/src/index.ts"],
+      "@hospital/not-found": ["libs/not-found/src/index.ts"],
+      "@hospital/ui": ["libs/ui/src/index.ts"],
+      "@hospital/user": ["libs/user/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

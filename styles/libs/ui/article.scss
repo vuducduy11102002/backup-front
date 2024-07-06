@@ -1,0 +1,198 @@
+.article {
+    display: flex;
+    width: 1452px;
+    height: 450px;
+
+    .img-christ {
+        height: auto;
+        max-width: 100%;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    .content {
+        background: linear-gradient(#43b9dc, #34d3b4);
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0px 70px 0px 72px;
+        align-content: center;
+        align-items: center;
+
+        .wp {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            h1 {
+                font-size: 30px;
+                color: white;
+            }
+            p {
+                font-weight: 700;
+                padding: 0 35px 30px 35px;
+                color: white;
+            }
+            .btn-view {
+                cursor: pointer;
+                padding: 15px;
+                background-color: transparent;
+                font-family: 'Montserrat', Sans-serif;
+                font-weight: bold;
+                fill: #ffffff;
+                color: #ffffff;
+                background-color: #ffffff00;
+                border: 3px solid orange;
+                border-radius: 0px 0px 0px 0px;
+            }
+            .btn-view:hover {
+                font-family: 'Montserrat', Sans-serif;
+                font-weight: bold;
+                text-transform: uppercase;
+                fill: #ffffff;
+                color: #ffffff;
+                background-color: #ffffff00;
+                border: 3px solid orange;
+                border-radius: 0px 0px 0px 0px;
+                transition: transform 0.3s ease-in-out;
+                transform: scale(0.85);
+            }
+            .btn-article {
+                cursor: pointer;
+                padding: 15px;
+                background-color: transparent;
+                font-family: 'Montserrat', Sans-serif;
+                font-weight: bold;
+                fill: #ffffff;
+                color: #ffffff;
+                background-color: orange;
+
+                border-color: orange;
+                border-radius: 0px 0px 0px 0px;
+            }
+            .btn-article:hover {
+                font-family: 'Montserrat', Sans-serif;
+                font-weight: bold;
+                text-transform: uppercase;
+                fill: #ffffff;
+                color: #ffffff;
+                background-color: orange;
+
+                border-color: orange;
+                border-radius: 0px 0px 0px 0px;
+                transition: transform 0.3s ease-in-out;
+                transform: scale(0.85);
+            }
+        }
+    }
+}
+
+.background-overlay {
+    background: url(~/assets/blurred-hospital-scene.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    max-width: 1500px;
+    min-height: 500px;
+    background-color: #ffffff;
+    opacity: 0.5;
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+    align-items: center;
+    .overlay {
+        padding: 50px;
+        width: 50%;
+
+        .content-overlay {
+            line-height: 36px;
+            color: #00538a;
+            font-family: Crimson Text, Sans-serif;
+            h2 {
+                font-weight: 800;
+            }
+            .btn-overlay {
+                cursor: pointer;
+                background-color: transparent;
+                padding: 10px;
+                border: 2px solid orange;
+            }
+            .btn-overlay:hover {
+                cursor: pointer;
+                transition: transform 0.3s ease-in-out;
+                transform: scale(0.95);
+            }
+        }
+    }
+}
+.slider {
+    height: 250px;
+    margin: auto;
+    position: relative;
+    width: 90%;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+}
+
+.slide-track {
+    display: flex;
+    width: calc(250px * 18);
+    animation: scroll 20s linear infinite;
+}
+
+.slide-track:hover {
+    cursor: pointer;
+    animation-play-state: paused;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-250px * 7)); /* Đặt giá trị này là chiều rộng của ảnh nhân với số lượng ảnh - 1 */
+    }
+}
+.slide:last-child {
+    margin-right: 0;
+    transform: translateZ(0);
+}
+
+.slide {
+    height: 200px;
+    width: 250px;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    img {
+        width: 100%;
+        transition: transform 1s;
+    }
+    img:hover {
+        transform: translateZ(20px);
+    }
+    perspective: 100px;
+}
+
+/* GRADIENT SHADOWS */
+
+.slider::before,
+.slider::after {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 100%);
+    content: '';
+    height: 100%;
+    position: absolute;
+    width: 15%;
+    z-index: 2;
+}
+
+.slider::before {
+    left: 0;
+    top: 0;
+}
+
+.slider::after {
+    right: 0;
+    top: 0;
+    transform: rotateZ('100deg');
+}

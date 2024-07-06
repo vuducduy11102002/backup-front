@@ -1,0 +1,8 @@
+<div class="card" style="margin: 40px 80px 0px 0px; width: 550px">
+  <p-calendar
+    [(ngModel)]="selectedDate"
+    (onSelect)="onDateSelect()"
+    dateFormat="yy-mm-dd"
+  ></p-calendar>
+  <p-chart type="bar" [data]="basicData" [options]="basicOptions"></p-chart>
+</div>

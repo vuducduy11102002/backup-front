@@ -1,0 +1,75 @@
+/* main--content */
+.main--content {
+  background-color: white;
+  height: 320vh;
+  position: absolute;
+  top: 20px;
+  width: 1250px;
+  padding: 0 40px;
+  transition: 0.3s;
+}
+.main--content.active {
+  width: 100%;
+}
+
+.cards {
+  display: flex;
+  gap: 10px;
+}
+.card {
+  padding: 20px;
+  border-radius: 20px;
+  min-width: 230px;
+  height: auto;
+  transition: 0.3s;
+}
+.card:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.card--data {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.card h1 {
+  font-size: 30px;
+  margin-top: 10px;
+}
+
+.card-1 {
+  background-color: rgba(80, 115, 251, 0.1);
+}
+.card-1 .card--title {
+  color: rgba(80, 115, 251, 1);
+}
+.card-2 {
+  background-color: rgba(241, 210, 67, 0.1);
+}
+.card-2 .card--title {
+  color: rgba(241, 210, 67, 1);
+}
+
+.card-3 {
+  background-color: rgba(112, 215, 165, 0.1);
+}
+.card-3 .card--title {
+  color: rgba(112, 215, 165, 1);
+}
+
+.card-4 {
+  background-color: rgba(227, 106, 200, 0.1);
+}
+.card-4 .card--title {
+  color: rgba(227, 106, 200, 1);
+}
+
+.card-5 {
+  background-color: rgba(218, 191, 191, 0.1);
+}
+.card-5 .card--title {
+  color: rgb(86, 86, 42);
+}
+.chart--content {
+  margin-top: 20px;
+  display: flex;
+}

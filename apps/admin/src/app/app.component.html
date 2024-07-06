@@ -1,0 +1,3 @@
+<hospital-side-nav *ngIf="shouldShowComponents" (OnToggleSideNav)="onToggleSideNav($event)"></hospital-side-nav>
+<hospital-header *ngIf="shouldShowComponents" [collapsed]="isSideNavCollapsed" [screenWidth]="screenWidth"></hospital-header>
+<hospital-body [collapsed]="isSideNavCollapsed" [screenWidth]="screenWidth"></hospital-body>

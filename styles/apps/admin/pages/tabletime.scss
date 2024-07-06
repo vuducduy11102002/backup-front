@@ -1,0 +1,77 @@
+// Calendar
+.button-pick {
+    button {
+        padding: 14px;
+    }
+
+    .previous {
+        border-radius: 5%;
+        background: linear-gradient(#43b9dc, #34d3b4);
+        cursor: pointer;
+        color: white;
+    }
+    .previous:hover {
+        transition: transform 0.4s ease-in-out;
+        transform: scale(0.9);
+        border-radius: 5%;
+        background: linear-gradient(#43b9dc, #34d3b4);
+        cursor: pointer;
+        color: white;
+    }
+    .today {
+        border-radius: 5%;
+        background: linear-gradient(#44889d, #2fad94);
+        cursor: pointer;
+        color: white;
+    }
+    .today:hover {
+        transition: transform 0.4s ease-in-out;
+        transform: scale(0.9);
+        border-radius: 5%;
+        background: linear-gradient(#44889d, #2fad94);
+        cursor: pointer;
+        color: white;
+    }
+    .next {
+        border-radius: 5%;
+        background: linear-gradient(#43b9dc, #34d3b4);
+        cursor: pointer;
+        color: white;
+    }
+    .next:hover {
+        transition: transform 0.4s ease-in-out;
+        transform: scale(0.9);
+        border-radius: 5%;
+        background: linear-gradient(#43b9dc, #34d3b4);
+        cursor: pointer;
+        color: white;
+    }
+    table.schedular {
+        width: 100%;
+        border-collapse: collapse;
+        border: 1px solid #ccc;
+
+        th,
+        td {
+            text-align: center;
+            padding: 8px;
+            border: 1px solid #ccc;
+        }
+
+        .time-slot-header {
+            background-color: #ccc;
+            font-weight: bold;
+        }
+        .day-header {
+            font-weight: 700;
+        }
+        .day-content {
+            .color-time {
+                width: '100%';
+                height: '30px';
+                border-radius: '5px';
+                font-size: '4px';
+            }
+        }
+    }
+}

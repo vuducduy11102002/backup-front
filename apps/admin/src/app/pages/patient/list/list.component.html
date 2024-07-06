@@ -1,0 +1,140 @@
+<p-toast [style]="{ top: '100px' }"></p-toast>
+<p-card header="Patient" subheader="List of all Patient">
+    <div class="grid">
+        <div class="col-12">
+            <p-toolbar>
+                <div class="p-toolbar-group-left">
+                    <p-button label="New" icon="pi pi-plus" class="mr-2" routerLink="/patient/create" routerLinkActive="active"></p-button>
+                    <button pButton pRipple icon="pi pi-trash" class="mr-2 p-button-danger" (click)="SoftDeletePatients()"></button>
+                    <div class="card flex justify-content-center">
+                        <p-button styleClass="p-button-help" (click)="showDialog()" icon="pi pi-external-link" label="Show"></p-button>
+
+                        <p-dialog header="List Deleted" [(visible)]="Visible" [style]="{ width: '50vw', height: '300px' }">
+                            <p-button label="Restore" class="m-3" styleClass="p-button-primary" icon="pi pi-undo" (click)="RestorePatients()"></p-button>
+                            <p-table
+                                [value]="softDeletedPatients"
+                                [tableStyle]="{ 'min-width': '50rem' }"
+                                [resizableColumns]="true"
+                                [(selection)]="selectedPatients"
+                                [paginator]="true"
+                                [rowsPerPageOptions]="[10, 25, 50]"
+                                [rows]="10"
+                                [showCurrentPageReport]="true"
+                                [scrollable]="true"
+                            >
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th style="width: 4rem" pFrozenColumn>
+                                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                                        </th>
+                                        <th pResizableColumn pFrozenColumn>id</th>
+                                        <th pResizableColumn pFrozenColumn>PatientName</th>
+                                        <th pResizableColumn>Gender</th>
+                                        <th pResizableColumn>CareRequired</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-DeletePatient>
+                                    <tr>
+                                        <td pFrozenColumn>
+                                            <p-tableCheckbox [value]="DeletePatient"></p-tableCheckbox>
+                                        </td>
+                                        <td pFrozenColumn>{{ DeletePatient.id }}</td>
+                                        <td pFrozenColumn>{{ DeletePatient.PatientName }}</td>
+                                        <td pFrozenColumn>{{ DeletePatient.Gender }}</td>
+                                        <td pFrozenColumn>{{ DeletePatient.CareRequired }}</td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </p-dialog>
+                    </div>
+                </div>
+            </p-toolbar>
+        </div>
+    </div>
+    <div class="grid">
+        <div class="col-12">
+            <p-table
+                [value]="patient"
+                [resizableColumns]="true"
+                columnResizeMode="expand"
+                styleClass="p-datatable-gridlines"
+                [tableStyle]="{ 'min-width': '50rem' }"
+                [paginator]="true"
+                [rowsPerPageOptions]="[10, 25, 50]"
+                [rows]="10"
+                [showCurrentPageReport]="true"
+                [scrollable]="true"
+                [(selection)]="selectedPatients"
+                dataKey="id"
+            >
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 4rem" pFrozenColumn>
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+                        <th pResizableColumn pFrozenColumn>id</th>
+                        <th pResizableColumn pFrozenColumn>PatientName</th>
+                        <th pResizableColumn>CareRequired</th>
+                        <th pResizableColumn>BloodGroup</th>
+                        <th pResizableColumn>Allergies</th>
+                        <th pResizableColumn>Gender</th>
+                        <th pResizableColumn>Weight</th>
+                        <th pResizableColumn>EmploymentStatus</th>
+                        <th pResizableColumn>Admission</th>
+                        <th pResizableColumn>Employer</th>
+                        <th pResizableColumn>DateOfBirth</th>
+                        <th pResizableColumn>BloodPressure</th>
+                        <th pResizableColumn>Occupation</th>
+                        <th pResizableColumn>Diagnosis</th>
+                        <th pResizableColumn>Religion</th>
+                        <th pResizableColumn>ChronicCondition</th>
+                        <th pResizableColumn>Nationalty</th>
+                        <th>Edit&Delete</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-patients>
+                    <tr>
+                        <td pFrozenColumn>
+                            <p-tableCheckbox [value]="patients"></p-tableCheckbox>
+                        </td>
+                        <td pFrozenColumn>{{ patients.id }}</td>
+                        <td pFrozenColumn>{{ patients.PatientName }}</td>
+                        <td>{{ patients.CareRequired }}</td>
+                        <td>{{ patients.BloodGroup }}</td>
+                        <td>{{ patients.Allergies }}</td>
+                        <td>{{ patients.Gender }}</td>
+                        <td>{{ patients.Weight }}</td>
+                        <td>{{ patients.EmploymentStatus }}</td>
+                        <td>{{ patients.Admission }}</td>
+                        <td>{{ patients.Employer }}</td>
+                        <td>{{ patients.Dob }}</td>
+                        <td>{{ patients.BloodPressure }}</td>
+                        <td>{{ patients.Occupation }}</td>
+                        <td>{{ patients.Diagnosis }}</td>
+                        <td>{{ patients.Religion }}</td>
+                        <td>{{ patients.ChronicCondition }}</td>
+                        <td>{{ patients.Nationality }}</td>
+                        <td>
+                            <p-button
+                                label="Delete"
+                                class="mr-2"
+                                styleClass="p-button-danger"
+                                icon="pi pi-trash"
+                                (click)="DeletePatient(patients.id)"
+                            ></p-button>
+                            <p-button
+                                label="Edit"
+                                class="mr-2"
+                                styleClass="p-button-secondary"
+                                icon="pi pi-pencil"
+                                (click)="updatePatient(patients.id)"
+                            ></p-button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</p-card>
+<p-confirmDialog [style]="{ width: '50vw' }"></p-confirmDialog>
+<div></div>

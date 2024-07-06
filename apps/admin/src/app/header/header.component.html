@@ -1,0 +1,140 @@
+<div class="head" [ngClass]="getHeadClass()">
+  <div class="head-content">
+    <div class="head-content-left">
+      <div class="search-container">
+        <div *ngIf="!canShowSearchAsOverlay" class="normal-search">
+          <i class="fi fi-rr-search search-icon"></i>
+          <input
+            type="text"
+            class="search"
+            name=""
+            id=""
+            placeholder="Search..."
+          />
+        </div>
+        <div *ngIf="canShowSearchAsOverlay">
+          <button
+            [cdkMenuTriggerFor]="searchOverlay"
+            class="search-menu-btn ripple"
+          >
+            <i class="fi fi-rr-search search-icon"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="head-content-right">
+      <div class="head-menu">
+        <div class="head-menu-item">
+          <button
+            class="head-menu-item-btn ripple"
+            [cdkMenuTriggerFor]="LanguageOverlay"
+          >
+            <img
+              [src]="'assets/flags/' + selectedLanguage.flag + '.jpg'"
+              alt="flag"
+              class="flag"
+            />
+          </button>
+        </div>
+        <div class="head-menu-item">
+          <button class="head-menu-item-btn ripple">
+            <i class="fi fi-rr-expand menu-icon"></i>
+          </button>
+        </div>
+        <div class="head-menu-item">
+          <button
+            class="head-menu-item-btn ripple"
+            [cdkMenuTriggerFor]="notificationOverlay"
+          >
+            <i class="fi fi-rr-bells menu-icon"></i>
+          </button>
+        </div>
+        <div class="head-menu-item">
+          <button class="head-menu-item-btn ripple" (click)="showDialog()">
+            <i class="fi fi-rr-comment-alt menu-icon"> </i>
+          </button>
+        </div>
+        <p-dialog
+          header="Message"
+          [(visible)]="visible"
+          position="right"
+          [style]="{ width: '25vw', height: '250vw', top: '55px' }"
+        >
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </p-dialog>
+      </div>
+      <div class="head-user-avatar-container">
+        <div class="head-user-avatar" [cdkMenuTriggerFor]="userOverlay">
+          <img src="assets/user3.jpg" alt="" class="user-avatar" />
+          <div class="circle-indicator pulse"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #searchOverlay>
+  <div class="overlay overlay-search overlay-fall" cdkMenu>
+    <input type="search" class="search" name="" id="" placeholder="Search..." />
+    <button class="search-btn">
+      <i class="fi fi-rr-search search-icon"></i>
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #LanguageOverlay>
+  <div class="overlay overlay-language overlay-fall" cdkMenu>
+    <ul>
+      <li *ngFor="let lang of languages" cdkMenuItem>
+        <img [src]="'assets/flags/' + lang.flag + '.jpg'" alt="flag" />
+        <span>{{ lang.language }}</span>
+      </li>
+    </ul>
+  </div>
+</ng-template>
+
+<ng-template #notificationOverlay>
+  <div class="overlay overlay-notification overlay-fall" cdkMenu>
+    <ul>
+      <li class="notification-head-container">
+        <div class="notification-head">Notification</div>
+        <span class="view-all-link">
+          <a>View All</a>
+        </span>
+      </li>
+      <li
+        class="notification-message-container"
+        *ngFor="let notification of notifications"
+      >
+        <i [class]="notification.icon"></i>
+        <div>
+          <div class="notification-subject">
+            {{ notification.subject }}
+          </div>
+          <p class="notification-desc">{{ notification.description }}</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</ng-template>
+
+<ng-template #userOverlay>
+  <div class="overlay overlay-user overlay-fall" cdkMenu>
+    <ul>
+      <li *ngFor="let item of userItems" cdkMenuItem>
+        <a>
+          <i class="icon" [ngClass]="item.icon"></i>
+          <span>{{ item.Label }} </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</ng-template>

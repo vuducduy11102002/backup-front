@@ -1,0 +1,642 @@
+<div class="button-pick">
+  <button class="previous" (click)="previousWeek()">Previous Week</button>
+  <button class="today" (click)="goToToday()">Today</button>
+  <button class="next" (click)="nextWeek()">Next Week</button>
+  <p-calendar [showIcon]="true" (onSelect)="onDateSelect($event)"></p-calendar>
+
+  <table class="schedular">
+    <tbody>
+      <tr>
+        <th class="time-slot-header">TimeSlot</th>
+        <th class="time">Time</th>
+        <td class="day-header" *ngFor="let day of getWeekDays()">
+          <div class="day">
+            {{ day | date : 'EEEE' }} <br />
+            {{ day | date : 'd/MM/yyyy' }}
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="time-slot-header"></td>
+        <td class="time">1:00 AM</td>
+        <td class="day-content" *ngFor="let day of getWeekDays()">
+          <ng-container
+            *ngFor="
+              let appointment of getAppointmentsForDayAndTimeSlot(
+                day,
+                'morning'
+              )
+            "
+          >
+            <ng-container
+              *ngIf="
+                appointment.time! >= '01:00' && appointment.time! < '02:00'
+              "
+            >
+              <div
+                [ngStyle]="{ 'background-color': 'aquamarine' }"
+                class="color-time"
+              >
+                Time has been booked
+              </div>
+            </ng-container>
+          </ng-container>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="time-slot-header"></td>
+        <td class="time">2:00 AM</td>
+        <td class="day-content" *ngFor="let day of getWeekDays()">
+          <ng-container
+            *ngFor="
+              let appointment of getAppointmentsForDayAndTimeSlot(
+                day,
+                'morning'
+              )
+            "
+          >
+            <ng-container
+              *ngIf="
+                appointment.time! >= '02:00' && appointment.time! < '03:00'
+              "
+            >
+              <div
+                [ngStyle]="{ 'background-color': 'aquamarine' }"
+                class="color-time"
+              >
+                Time has been booked
+              </div>
+            </ng-container>
+          </ng-container>
+        </td>
+      </tr>
+      <tr>
+        <td class="time-slot-header"></td>
+        <td class="time">3:00 AM</td>
+        <td class="day-content" *ngFor="let day of getWeekDays()">
+          <ng-container
+            *ngFor="
+              let appointment of getAppointmentsForDayAndTimeSlot(
+                day,
+                'morning'
+              )
+            "
+          >
+            <ng-container
+              *ngIf="
+                appointment.time! >= '03:00' && appointment.time! < '04:00'
+              "
+            >
+              <div
+                [ngStyle]="{ 'background-color': 'aquamarine' }"
+                class="color-time"
+              >
+                Time has been booked
+              </div>
+            </ng-container>
+          </ng-container>
+        </td>
+      </tr>
+      <tr>
+        <td class="time-slot-header"></td>
+        <td class="time">4:00 AM</td>
+        <td class="day-content" *ngFor="let day of getWeekDays()">
+          <ng-container
+            *ngFor="
+              let appointment of getAppointmentsForDayAndTimeSlot(
+                day,
+                'morning'
+              )
+            "
+          >
+            <ng-container
+              *ngIf="
+                appointment.time! >= '04:00' && appointment.time! < '05:00'
+              "
+            >
+              <div
+                [ngStyle]="{ 'background-color': 'aquamarine' }"
+                class="color-time"
+              >
+                Time has been booked
+              </div></ng-container
+            >
+          </ng-container>
+        </td>
+      </tr>
+      <tr>
+        <td class="time-slot-header">Morning</td>
+        <td class="time">5:00 AM</td>
+        <td class="day-content" *ngFor="let day of getWeekDays()">
+          <ng-container
+            *ngFor="
+              let appointment of getAppointmentsForDayAndTimeSlot(
+                day,
+                'morning'
+              )
+            "
+          >
+            <ng-container
+              *ngIf="
+                appointment.time! >= '05:00' && appointment.time! < '06:00'
+              "
+            >
+              <div
+                [ngStyle]="{ 'background-color': 'aquamarine' }"
+                class="color-time"
+              >
+                Time has been booked
+              </div>
+            </ng-container>
+          </ng-container>
+        </td>
+      </tr>
+      <tr>
+        <td class="time-slot-header"></td>
+        <td class="time">6:00 AM</td>
+        <td class="day-content" *ngFor="let day of getWeekDays()">
+          <ng-container
+            *ngFor="
+              let appointment of getAppointmentsForDayAndTimeSlot(
+                day,
+                'morning'
+              )
+            "
+          >
+            <ng-container
+              *ngIf="
+                appointment.time! >= '06:00' && appointment.time! < '07:00'
+              "
+            >
+              <div
+                [ngStyle]="{ 'background-color': 'aquamarine' }"
+                class="color-time"
+              >
+                Time has been booked
+              </div>
+            </ng-container>
+          </ng-container>
+        </td>
+      </tr>
+      <tr>
+        <td class="time-slot-header"></td>
+        <td class="time">7:00 AM</td>
+        <td class="day-content" *ngFor="let day of getWeekDays()">
+          <ng-container
+            *ngFor="
+              let appointment of getAppointmentsForDayAndTimeSlot(
+                day,
+                'morning'
+              )
+            "
+          >
+            <ng-container
+              *ngIf="
+                appointment.time! >= '07:00' && appointment.time! < '08:00'
+              "
+            >
+              <div
+                [ngStyle]="{ 'background-color': 'aquamarine' }"
+                class="color-time"
+              >
+                Time has been booked
+              </div>
+            </ng-container>
+          </ng-container>
+        </td>
+      </tr>
+      <tr>
+        <td class="time-slot-header"></td>
+        <td class="time">8:00 AM</td>
+        <td class="day-content" *ngFor="let day of getWeekDays()">
+          <ng-container
+            *ngFor="
+              let appointment of getAppointmentsForDayAndTimeSlot(
+                day,
+                'morning'
+              )
+            "
+          >
+            <ng-container
+              *ngIf="
+                appointment.time! >= '08:00' && appointment.time! < '09:00'
+              "
+            >
+              <div
+                [ngStyle]="{ 'background-color': 'aquamarine' }"
+                class="color-time"
+              >
+                Time has been booked
+              </div>
+            </ng-container>
+          </ng-container>
+        </td>
+      </tr>
+      <tr>
+        <td class="time-slot-header"></td>
+        <td class="time">9:00 AM</td>
+        <td class="day-content" *ngFor="let day of getWeekDays()">
+          <ng-container
+            *ngFor="
+              let appointment of getAppointmentsForDayAndTimeSlot(
+                day,
+                'morning'
+              )
+            "
+          >
+            <ng-container
+              *ngIf="appointment.time! >= '09:00' && appointment.time! < '9:59'"
+            >
+              <div
+                [ngStyle]="{ 'background-color': 'aquamarine' }"
+                class="color-time"
+              >
+                Time has been booked
+              </div>
+            </ng-container>
+          </ng-container>
+        </td>
+      </tr>
+      <tr>
+        <td class="time-slot-header"></td>
+        <td class="time">10:00 AM</td>
+        <td class="day-content" *ngFor="let day of getWeekDays()">
+          <ng-container
+            *ngFor="
+              let appointment of getAppointmentsForDayAndTimeSlot(
+                day,
+                'morning'
+              )
+            "
+          >
+            <ng-container
+              *ngIf="
+                appointment.time! >= '10:00' && appointment.time! < '11:00'
+              "
+            >
+              <div
+                [ngStyle]="{ 'background-color': 'aquamarine' }"
+                class="color-time"
+              >
+                Time has been booked
+              </div>
+            </ng-container>
+          </ng-container>
+        </td>
+      </tr>
+      <tr>
+        <td class="time-slot-header"></td>
+        <td class="time">11:00 AM</td>
+        <td class="day-content" *ngFor="let day of getWeekDays()">
+          <ng-container
+            *ngFor="
+              let appointment of getAppointmentsForDayAndTimeSlot(
+                day,
+                'morning'
+              )
+            "
+          >
+            <ng-container
+              *ngIf="
+                appointment.time! >= '11:00' && appointment.time! < '12:00'
+              "
+            >
+              <div
+                [ngStyle]="{ 'background-color': 'aquamarine' }"
+                class="color-time"
+              >
+                Time has been booked
+              </div>
+            </ng-container>
+          </ng-container>
+        </td>
+      </tr>
+      <tr>
+        <td class="time-slot-header">Afternoon</td>
+        <td class="time">12:00 PM</td>
+        <td class="day-content" *ngFor="let day of getWeekDays()">
+          <ng-container
+            *ngFor="
+              let appointment of getAppointmentsForDayAndTimeSlot(
+                day,
+                'afternoon'
+              )
+            "
+          >
+            <ng-container
+              *ngIf="
+                appointment.time! >= '12:00' && appointment.time! < '13:00'
+              "
+            >
+              <div
+                [ngStyle]="{ 'background-color': 'aquamarine' }"
+                class="color-time"
+              >
+                Time has been booked
+              </div>
+            </ng-container>
+          </ng-container>
+        </td>
+      </tr>
+      <tr>
+        <td class="time-slot-header"></td>
+        <td class="time">13:00 PM</td>
+        <td class="day-content" *ngFor="let day of getWeekDays()">
+          <ng-container
+            *ngFor="
+              let appointment of getAppointmentsForDayAndTimeSlot(
+                day,
+                'afternoon'
+              )
+            "
+          >
+            <ng-container
+              *ngIf="
+                appointment.time! >= '13:00' && appointment.time! < '14:00'
+              "
+            >
+              <div
+                [ngStyle]="{ 'background-color': 'aquamarine' }"
+                class="color-time"
+              >
+                Time has been booked
+              </div>
+            </ng-container>
+          </ng-container>
+        </td>
+      </tr>
+      <tr>
+        <td class="time-slot-header"></td>
+        <td class="time">14:00 PM</td>
+        <td class="day-content" *ngFor="let day of getWeekDays()">
+          <ng-container
+            *ngFor="
+              let appointment of getAppointmentsForDayAndTimeSlot(
+                day,
+                'afternoon'
+              )
+            "
+          >
+            <ng-container
+              *ngIf="
+                appointment.time! >= '14:00' && appointment.time! < '15:00'
+              "
+            >
+              <div
+                [ngStyle]="{ 'background-color': 'aquamarine' }"
+                class="color-time"
+              >
+                Time has been booked
+              </div>
+            </ng-container>
+          </ng-container>
+        </td>
+      </tr>
+      <tr>
+        <td class="time-slot-header"></td>
+        <td class="time">15:00 PM</td>
+        <td class="day-content" *ngFor="let day of getWeekDays()">
+          <ng-container
+            *ngFor="
+              let appointment of getAppointmentsForDayAndTimeSlot(
+                day,
+                'afternoon'
+              )
+            "
+          >
+            <ng-container
+              *ngIf="
+                appointment.time! >= '15:00' && appointment.time! < '16:00'
+              "
+            >
+              <div
+                [ngStyle]="{ 'background-color': 'aquamarine' }"
+                class="color-time"
+              >
+                Time has been booked
+              </div>
+            </ng-container>
+          </ng-container>
+        </td>
+      </tr>
+      <tr>
+        <td class="time-slot-header"></td>
+        <td class="time">16:00 PM</td>
+        <td class="day-content" *ngFor="let day of getWeekDays()">
+          <ng-container
+            *ngFor="
+              let appointment of getAppointmentsForDayAndTimeSlot(
+                day,
+                'afternoon'
+              )
+            "
+          >
+            <ng-container
+              *ngIf="
+                appointment.time! >= '16:00' && appointment.time! < '17:00'
+              "
+            >
+              <div
+                [ngStyle]="{ 'background-color': 'aquamarine' }"
+                class="color-time"
+              >
+                Time has been booked
+              </div>
+            </ng-container>
+          </ng-container>
+        </td>
+      </tr>
+      <tr>
+        <td class="time-slot-header"></td>
+        <td class="time">17:00 PM</td>
+        <td class="day-content" *ngFor="let day of getWeekDays()">
+          <ng-container
+            *ngFor="
+              let appointment of getAppointmentsForDayAndTimeSlot(
+                day,
+                'afternoon'
+              )
+            "
+          >
+            <ng-container
+              *ngIf="
+                appointment.time! >= '17:00' && appointment.time! < '18:00'
+              "
+            >
+              <div
+                [ngStyle]="{ 'background-color': 'aquamarine' }"
+                class="color-time"
+              >
+                Time has been booked
+              </div>
+            </ng-container>
+          </ng-container>
+        </td>
+      </tr>
+      <tr>
+        <td class="time-slot-header">Evening</td>
+        <td class="time">18:00 PM</td>
+        <td class="day-content" *ngFor="let day of getWeekDays()">
+          <ng-container
+            *ngFor="
+              let appointment of getAppointmentsForDayAndTimeSlot(
+                day,
+                'evening'
+              )
+            "
+          >
+            <ng-container
+              *ngIf="
+                appointment.time! >= '18:00' && appointment.time! < '19:00'
+              "
+            >
+              <div
+                [ngStyle]="{ 'background-color': 'aquamarine' }"
+                class="color-time"
+              >
+                Time has been booked
+              </div>
+            </ng-container>
+          </ng-container>
+        </td>
+      </tr>
+      <tr>
+        <td class="time-slot-header"></td>
+        <td class="time">19:00 PM</td>
+        <td class="day-content" *ngFor="let day of getWeekDays()">
+          <ng-container
+            *ngFor="
+              let appointment of getAppointmentsForDayAndTimeSlot(
+                day,
+                'evening'
+              )
+            "
+          >
+            <ng-container
+              *ngIf="
+                appointment.time! >= '19:00' && appointment.time! < '20:00'
+              "
+            >
+              <div
+                [ngStyle]="{ 'background-color': 'aquamarine' }"
+                class="color-time"
+              >
+                Time has been booked
+              </div>
+            </ng-container>
+          </ng-container>
+        </td>
+      </tr>
+      <tr>
+        <td class="time-slot-header"></td>
+        <td class="time">20:00 PM</td>
+        <td class="day-content" *ngFor="let day of getWeekDays()">
+          <ng-container
+            *ngFor="
+              let appointment of getAppointmentsForDayAndTimeSlot(
+                day,
+                'evening'
+              )
+            "
+          >
+            <ng-container
+              *ngIf="
+                appointment.time! >= '20:00' && appointment.time! < '21:00'
+              "
+            >
+              <div
+                [ngStyle]="{ 'background-color': 'aquamarine' }"
+                class="color-time"
+              >
+                Time has been booked
+              </div>
+            </ng-container>
+          </ng-container>
+        </td>
+      </tr>
+      <tr>
+        <td class="time-slot-header"></td>
+        <td class="time">21:00 PM</td>
+        <td class="day-content" *ngFor="let day of getWeekDays()">
+          <ng-container
+            *ngFor="
+              let appointment of getAppointmentsForDayAndTimeSlot(
+                day,
+                'evening'
+              )
+            "
+          >
+            <ng-container
+              *ngIf="
+                appointment.time! >= '21:00' && appointment.time! < '22:00'
+              "
+            >
+              <div
+                [ngStyle]="{ 'background-color': 'aquamarine' }"
+                class="color-time"
+              >
+                Time has been booked
+              </div>
+            </ng-container>
+          </ng-container>
+        </td>
+      </tr>
+      <tr>
+        <td class="time-slot-header"></td>
+        <td class="time">22:00 PM</td>
+        <td class="day-content" *ngFor="let day of getWeekDays()">
+          <ng-container
+            *ngFor="
+              let appointment of getAppointmentsForDayAndTimeSlot(
+                day,
+                'evening'
+              )
+            "
+          >
+            <ng-container
+              *ngIf="
+                appointment.time! >= '22:00' && appointment.time! < '23:00'
+              "
+            >
+              <div
+                [ngStyle]="{ 'background-color': 'aquamarine' }"
+                class="color-time"
+              >
+                Time has been booked
+              </div>
+            </ng-container>
+          </ng-container>
+        </td>
+      </tr>
+      <tr>
+        <td class="time-slot-header"></td>
+        <td class="time">23:00 PM</td>
+        <td class="day-content" *ngFor="let day of getWeekDays()">
+          <ng-container
+            *ngFor="
+              let appointment of getAppointmentsForDayAndTimeSlot(
+                day,
+                'evening'
+              )
+            "
+          >
+            <ng-container
+              *ngIf="
+                appointment.time! >= '23:00' && appointment.time! < '24:00'
+              "
+            >
+              <div
+                [ngStyle]="{ 'background-color': 'aquamarine' }"
+                class="color-time"
+              >
+                Time has been booked
+              </div>
+            </ng-container>
+          </ng-container>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

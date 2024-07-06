@@ -1,0 +1,97 @@
+.service-section {
+    padding: 1rem 7%;
+    background: linear-gradient(#43b9dc, #34d3b4);
+    min-height: 50vh;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.service-section.active {
+    transition-delay: 0.2s;
+    opacity: 1;
+    visibility: visible;
+}
+
+#ourservices {
+    color: white;
+    font-size: 30px;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.inner-service-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    text-align: center;
+}
+
+.service-box {
+    flex: 1 1 200px;
+    padding: 5rem 0;
+    box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+
+    i {
+        color: white;
+    }
+    h2 {
+        color: white;
+    }
+    p {
+        color: white;
+    }
+}
+
+.service-box.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.service-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.2);
+    background-color: $fontcolor;
+    cursor: pointer;
+}
+
+.service-section.active .service-box:first-child {
+    transition-delay: 0.5s;
+    opacity: 1;
+    visibility: visible;
+}
+
+.service-section.active .service-box:nth-child(2) {
+    transition-delay: 0.8s;
+    opacity: 1;
+    visibility: visible;
+}
+
+.service-section.active .service-box:nth-child(3) {
+    transition-delay: 1.1s;
+    opacity: 1;
+    visibility: visible;
+}
+
+.service-section.active .service-box:nth-child(4) {
+    transition-delay: 1.3s;
+    opacity: 1;
+    visibility: visible;
+}
+
+.service-section.active .service-box:nth-child(5) {
+    transition-delay: 1.5s;
+    opacity: 1;
+    visibility: visible;
+}
+
+.service-section.active .service-box:nth-child(6) {
+    transition-delay: 1.7s;
+    opacity: 1;
+    visibility: visible;
+}

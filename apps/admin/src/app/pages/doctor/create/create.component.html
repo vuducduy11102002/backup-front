@@ -1,0 +1,43 @@
+<p-toast [style]="{ top: '100px' }"></p-toast>
+<div class="admin-page">
+    <p-card [header]="editmode ? 'Edit Doctor' : 'Add Doctor'" subheader="You can add or edit doctors here">
+        <div class="grid mb-5">
+            <div class="col-12">
+                <p-toolbar>
+                    <div class="p-toolbar-group-left"></div>
+                    <div class="p-toolbar-group-right">
+                        <p-button styleClass="p-button-primary mr-2" [label]="editmode ? 'Update' : 'Create'" icon="pi pi-plus" (click)="onSubmit()"></p-button>
+                        <p-button styleClass="p-button-secondary" label="Cancle" icon="pi pi-arrow-circle-left" (click)="onCancle()"></p-button>
+                    </div>
+                </p-toolbar>
+            </div>
+        </div>
+        <div class="grid">
+            <div class="col-12">
+                <form [formGroup]="form">
+                    <div class="grid">
+                        <div class="flex flex-column col-3">
+                            <label for="name">Name</label>
+                            <input formControlName="name" id="name" type="text" pInputText />
+                            <small *ngIf="doctorForm['name'].invalid && isSubmitted" class="p-error">Name is required</small>
+                        </div>
+                        <div class="flex flex-column col-3">
+                            <label for="specialist">specialist</label>
+                            <input formControlName="specialist" id="specialist" type="text" pInputText />
+                            <small *ngIf="doctorForm['specialist'].invalid && isSubmitted" class="p-error">Specialist is required</small>
+                        </div>
+                        <div class="flex flex-column col-3">
+                            <label for="name">Main Image</label>
+                            <input type="file" class="p-inputtext" accept="image/*" (change)="onImageUpload($event)" />
+                            <small *ngIf="doctorForm['image'].invalid && isSubmitted" class="p-error">Image is required</small>
+                            <div class="col-2 mt-2 pl-0">
+                                <img style="width: 200px" [src]="imageDisplay" alt="" />
+                            </div>
+                            <div class="col-3"></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </p-card>
+</div>

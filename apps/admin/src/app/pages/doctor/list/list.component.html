@@ -1,0 +1,48 @@
+<p-toast></p-toast>
+<div class="admin-page">
+    <p-card header="Doctor" subheader="List of all Doctors">
+        <div class="grid">
+            <div class="col-12">
+                <p-toolbar>
+                    <div class="p-toolbar-group-left">
+                        <p-button styleClass="p-button-success" label="New" icon="pi pi-plus" routerLink="/doctor/create" routerLinkActive="active"></p-button>
+                    </div>
+                </p-toolbar>
+            </div>
+        </div>
+        <div class="grid">
+            <div class="col-12">
+                <p-table [paginator]="true" [rows]="10" [value]="doctors" styleClass="p-datatable-gridlines" [globalFilterFields]="['name']">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
+                            <th>Image</th>
+                            <th pSortableColumn="specialist">Specialist <p-sortIcon field="specialist"></p-sortIcon></th>
+                            <th pSortableColumn="appointments">Appointments <p-sortIcon field="appointments"></p-sortIcon></th>
+                            <th></th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-doctor>
+                        <tr>
+                            <td>{{ doctor.name }}</td>
+                            <td><img [src]="doctor.image" style="width: 15rem" alt="" /></td>
+                            <td>{{ doctor.specialist }}</td>
+                            <td *ngIf="doctor.appointments && doctor.appointments.length > 0" style="white-space: pre-line">
+                                <ng-container *ngFor="let appointment of doctor.appointments; let last = last">
+                                    {{ appointment.patient.PatientName }} - {{ appointment.date }} - {{ appointment.time }} - {{ appointment.timeSlot }}
+                                    {{ !last ? '\n' : '' }}
+                                </ng-container>
+                            </td>
+
+                            <td>
+                                <!-- <p-button (click)="deleteDoctor(doctor.id)" styleClass="p-button-danger p-mr-2" icon="pi pi-trash"></p-button>
+                          <p-button (click)="updateDoctor(doctor.id)" styleClass="p-button-success" icon="pi pi-pencil"></p-button> -->
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </p-card>
+</div>
+<p-confirmDialog [style]="{ width: '50vw' }" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>

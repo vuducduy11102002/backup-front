@@ -1,0 +1,28 @@
+<p-table
+  [value]="pointment"
+  styleClass="p-datatable-gridlines"
+  [tableStyle]="{ 'min-width': '30rem' }"
+  [style]="{ textAlign: 'center' }"
+  [scrollable]="true"
+  scrollHeight="450px"
+>
+  <ng-template pTemplate="caption"> Upcoming Appointment</ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Patient Name</th>
+      <th>Doctor Name</th>
+      <th>Time</th>
+      <th>Date</th>
+      <th>timeSlot</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-pointments>
+    <tr>
+      <td>{{ pointments.patient.PatientName }}</td>
+      <td>{{ pointments.doctor.name }}</td>
+      <td>{{ pointments.date }}</td>
+      <td>{{ pointments.time }}</td>
+      <td>{{ pointments.timeSlot }}</td>
+    </tr>
+  </ng-template>
+</p-table>

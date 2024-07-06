@@ -1,0 +1,145 @@
+/* getfileCSV.component.scss */
+.csv-files {
+  /* getfileCSV.component.scss */
+
+  :host {
+    display: block;
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  form {
+    margin-bottom: 20px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  thead {
+    background-color: #f0f0f0;
+  }
+
+  thead th {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+  }
+
+  tbody {
+    text-align: center;
+  }
+
+  td {
+    padding: 10px;
+    vertical-align: top;
+    border: 1px solid #ccc;
+  }
+
+  .file-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 5px;
+    span {
+      padding-left: 52px;
+    }
+  }
+
+  .file-actions {
+    margin-top: 10px;
+  }
+
+  button {
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+
+  .dialog-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+
+  .dialog-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    max-width: 80%;
+    max-height: 80%;
+    overflow-y: auto;
+    animation: slideIn 0.3s ease;
+
+    @keyframes slideIn {
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  }
+
+  .dialog-content h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .dialog-content pre {
+    white-space: pre-wrap;
+    font-family: monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+
+  .dialog-content button {
+    margin-top: 10px;
+  }
+
+  @media (max-width: 768px) {
+    .dialog-content {
+      max-width: 90%;
+      max-height: 90%;
+    }
+  }
+
+  /* Box shadow effect for file items */
+  li {
+    list-style-type: none;
+    transition: box-shadow 0.3s ease;
+
+    &:hover {
+      padding: 5px;
+      background-color: aquamarine;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+  }
+}

@@ -1,0 +1,74 @@
+<!-- <div class="weekly-calendar">
+    <p-calendar [showIcon]="true"></p-calendar>
+    <div class="header-calendar">
+        <button (click)="previousWeek()">&#8678; Previous Week</button>
+        <button (click)="goToToday()">Today</button>
+        <button (click)="nextWeek()">Next Week &#8680;</button>
+    </div>
+    <div class="days">
+        <div *ngFor="let day of daysOfWeek" class="day-header">{{ day }}</div>
+        <ng-container *ngFor="let day of getWeekDays()">
+            <div class="day">
+                <div class="date">{{ day | date : 'd/MM/yyyy' }}</div>
+                <div class="time-slot">
+                    <div class="morning">
+                        <div class="time-slot-header">Morning</div>
+                        <div *ngFor="let appointment of getAppointmentsForDayAndTimeSlot(day, 'morning')">
+                            {{ appointment.patient!.PatientName }} - {{ appointment.time }} AM
+                        </div>
+                    </div>
+                    <div class="afternoon">
+                        <div class="time-slot-header">Afternoon</div>
+                        <div *ngFor="let appointment of getAppointmentsForDayAndTimeSlot(day, 'afternoon')">
+                            {{ appointment.patient!.PatientName }} - {{ appointment.time }} AM
+                        </div>
+                    </div>
+                    <div class="evening">
+                        <div class="time-slot-header">Evening</div>
+                        <div *ngFor="let appointment of getAppointmentsForDayAndTimeSlot(day, 'evening')">
+                            {{ appointment.patient!.PatientName }} - {{ appointment.time }} PM
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div> -->
+<!-- calendar.component.html -->
+<div class="weekly-calendar">
+    <p-calendar [showIcon]="true" (onSelect)="onDateSelect($event)"></p-calendar>
+
+    <div class="header-calendar">
+        <button class="previous" (click)="previousWeek()">Previous Week</button>
+        <button class="today" (click)="goToToday()">Today</button>
+        <button class="next" (click)="nextWeek()">Next Week</button>
+    </div>
+    <div class="days">
+        <div *ngFor="let day of daysOfWeek" class="day-header">{{ day }}</div>
+        <ng-container *ngFor="let day of getWeekDays()">
+            <div class="day">
+                <div class="date">{{ day | date : 'd/MM/yyyy' }}</div>
+                <div class="time-slot">
+                    <div class="morning">
+                        <div class="time-slot-header">Morning</div>
+                        <div *ngFor="let appointment of getAppointmentsForDayAndTimeSlot(day, 'morning')">
+                            {{ appointment.patient!.PatientName }} - {{ appointment.time }} AM
+                        </div>
+                    </div>
+                    <div class="afternoon">
+                        <div class="time-slot-header">Afternoon</div>
+                        <div *ngFor="let appointment of getAppointmentsForDayAndTimeSlot(day, 'afternoon')">
+                            {{ appointment.patient!.PatientName }} - {{ appointment.time }} AM
+                        </div>
+                    </div>
+                    <div class="evening">
+                        <div class="time-slot-header">Evening</div>
+                        <div *ngFor="let appointment of getAppointmentsForDayAndTimeSlot(day, 'evening')">
+                            {{ appointment.patient!.PatientName }} - {{ appointment.time }} PM
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    box-shadow: 0 1rem 1rem rgb(0, 0, 0, 0.1);
+    z-index: 10000000;
+
+    #logo {
+        font-size: 2rem;
+        color: black;
+
+        span {
+            color: $fontcolor;
+        }
+    }
+    .navbar a {
+        position: relative;
+        color: $fontcolor;
+        margin-left: 1.5rem;
+        text-decoration: none;
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px; /* Điều chỉnh độ dày của thanh kẻ dưới chân */
+            background-color: $fontcolor;
+            transform: scaleX(0); /* Ban đầu, thanh kẻ có chiều dài là 0 */
+            transform-origin: left;
+            transition: transform 0.3s ease; /* Tạo hiệu ứng chuyển đổi */
+        }
+
+        &:hover::before {
+            transform: scaleX(1); /* Khi hover, thanh kẻ sẽ mở rộng từ trái qua phải */
+        }
+    }
+
+    .icons {
+        i {
+            font-size: 1.2rem;
+            color: $fontcolor;
+            margin-left: 1rem;
+        }
+    }
+
+    .navbar.active {
+        left: 0;
+        transition: 0.5s;
+    }
+
+    #menu_bars {
+        font-size: 2rem;
+        color: $fontcolor;
+        display: none;
+    }
+}

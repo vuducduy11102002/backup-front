@@ -1,0 +1,59 @@
+<p-toast></p-toast>
+<div class="admin-page">
+    <p-card header="Message the patient want to have an appointment" subheader="List of all Appointments">
+        <div class="grid">
+            <div class="col-12">
+                <p-toolbar>
+                    <div class="p-toolbar-group-left">
+                        <p-button styleClass="p-button-success" label="New" icon="pi pi-plus" routerLink="form"></p-button>
+                    </div>
+                </p-toolbar>
+            </div>
+        </div>
+        <div class="grid">
+            <div class="col-12">
+                <p-table [paginator]="true" [rows]="10" [value]="requestAppointment" styleClass="p-datatable-gridlines" [globalFilterFields]="['name']">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th pSortableColumn="id">id <p-sortIcon field="id"></p-sortIcon></th>
+                            <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
+                            <th pSortableColumn="doctor">Doctor <p-sortIcon field="doctor"></p-sortIcon></th>
+                            <th pSortableColumn="email">Email <p-sortIcon field="email"></p-sortIcon></th>
+                            <th pSortableColumn="phone">Phone <p-sortIcon field="phone"></p-sortIcon></th>
+                            <th pSortableColumn="dob">Date Of Birth <p-sortIcon field="dob"></p-sortIcon></th>
+                            <th pSortableColumn="gender">Gender <p-sortIcon field="gender"></p-sortIcon></th>
+                            <th pSortableColumn="time">Time <p-sortIcon field="time"></p-sortIcon></th>
+                            <th pSortableColumn="date">Date <p-sortIcon field="date"></p-sortIcon></th>
+                            <th pSortableColumn="timeSlot">TimeSlot <p-sortIcon field="timeSlot"></p-sortIcon></th>
+                            <th pSortableColumn="address">address <p-sortIcon field="address"></p-sortIcon></th>
+                            <th pSortableColumn="createdAt">createdAt <p-sortIcon field="createdAt"></p-sortIcon></th>
+                            <th></th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-requestAppointments>
+                        <tr>
+                            <td>{{ requestAppointments.id }}</td>
+                            <td>{{ requestAppointments.name }}</td>
+                            <td>{{ requestAppointments.doctor.name }}</td>
+                            <td>{{ requestAppointments.email }}</td>
+                            <td>{{ requestAppointments.phone }}</td>
+                            <td>{{ requestAppointments.dob }}</td>
+                            <td>{{ requestAppointments.gender }}</td>
+                            <td>{{ requestAppointments.time }}</td>
+                            <td>{{ requestAppointments.date }}</td>
+                            <td>{{ requestAppointments.timeSlot }}</td>
+                            <td>{{ requestAppointments.address }}</td>
+                            <td>{{ requestAppointments.createdAt | date : 'short' }}</td>
+
+                            <td>
+                                <!-- <p-button (click)="deleteDoctor(doctor.id)" styleClass="p-button-danger p-mr-2" icon="pi pi-trash"></p-button>
+                                <p-button (click)="updateDoctor(doctor.id)" styleClass="p-button-success" icon="pi pi-pencil"></p-button> -->
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </p-card>
+</div>
+<p-confirmDialog [style]="{ width: '50vw' }" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>

@@ -1,0 +1,56 @@
+<div class="body-login">
+    <div class="container" #container>
+        <div class="form-container sign-up-container">
+            <form action="#">
+                <h1>Create Account</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your email for registration</span>
+                <input type="text" placeholder="Name" />
+                <input type="email" placeholder="Email" />
+                <input type="password" placeholder="Password" />
+                <button>Sign Up</button>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form [formGroup]="loginFormGroup">
+                <h1>Sign in</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your account</span>
+                <input type="email" placeholder="Email" formControlName="email" />
+                <small *ngIf="loginForm['email'].invalid && isSubmitted" class="p-error"
+                    ><span *ngIf="loginForm['email'].errors?.['required']">Email is required</span>
+                    <span *ngIf="loginForm['email'].errors?.['email']">Email is invalid</span></small
+                >
+                <input type="password" placeholder="Password" formControlName="password" />
+                <small *ngIf="loginForm['password'].invalid && isSubmitted" class="p-error">Password is required </small>
+                <div class="col-12" *ngIf="isSubmitted && authError">
+                    <small class="p-error">{{ authMessage }}</small>
+                </div>
+                <a href="#">Forgot your password?</a>
+                <button (click)="onSubmit()">Sign In</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                    <button class="ghost" (click)="signIn()">Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Enter your personal details and start journey with us</p>
+                    <button class="ghost" (click)="signUp()">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

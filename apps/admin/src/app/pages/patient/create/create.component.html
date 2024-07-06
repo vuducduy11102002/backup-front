@@ -1,0 +1,130 @@
+<p-toast [style]="{ top: '100px' }"></p-toast>
+
+<p-card [header]="editmode ? 'Edit Patient' : 'Add Patient'" subheader="You can Add or Edit Patient here">
+    <div class="grid mb-5">
+        <div class="col-12">
+            <p-toolbar>
+                <div class="p-toolbar-group-left"></div>
+                <div class="p-toolbar-group-right">
+                    <p-button
+                        [label]="editmode ? 'Update' : 'Save'"
+                        icon="pi pi-plus"
+                        class="mr-2"
+                        (click)="onSubmit()"
+                        [disabled]="!form.valid || isLoading"
+                    ></p-button>
+                    <p-button label="Cancle" icon="pi pi-arrow-circle-left" class="mr-2" styleClass="p-button-secondary" (click)="onCancle()"></p-button>
+                </div>
+            </p-toolbar>
+        </div>
+    </div>
+    <div class="grid">
+        <div class="col-12">
+            <form [formGroup]="form">
+                <div class="flex justify-content-between">
+                    <div class="flex flex-column m-2">
+                        <label for="PatientName">PatientName</label>
+                        <input formControlName="PatientName" id="PatientName" placeholder="Enter the PatientName" pInputText />
+                        <small *ngIf="patientForm['PatientName'].invalid && isSubmitted" class="p-error"> Please fill in the blanks</small>
+                    </div>
+                    <div class="flex flex-column m-2">
+                        <label>Care required</label>
+                        <p-dropdown formControlName="CareRequired" [options]="CareRequired" optionLabel="name"></p-dropdown>
+                    </div>
+                    <div class="flex flex-column m-2">
+                        <label>Blood Group</label>
+                        <p-dropdown formControlName="BloodGroup" [options]="BloodGroup" optionLabel="name"></p-dropdown>
+                    </div>
+                    <div class="flex flex-column m-2">
+                        <label for="Height">Height (m) *</label>
+                        <input formControlName="Height" id="Height" placeholder="Enter the Height" pInputText />
+                        <small *ngIf="patientForm['Height'].invalid && isSubmitted" class="p-error"> Please fill in the blanks</small>
+                    </div>
+                    <div class="flex flex-column m-2">
+                        <label for="Allergies">Allergies</label>
+                        <input formControlName="Allergies" id="Allergies" placeholder="Enter the Allergies" pInputText />
+                        <small *ngIf="patientForm['Allergies'].invalid && isSubmitted" class="p-error"> Please fill in the blanks</small>
+                    </div>
+                </div>
+                <div class="flex justify-content-between">
+                    <div class="m-2">
+                        <div class="flex gap-3 justify-content-center">
+                            <label for="Gender">Gender</label>
+                        </div>
+                        <div class="flex gap-3 m-2">
+                            <div *ngFor="let gender of Gender" class="field-checkbox">
+                                <p-radioButton [inputId]="gender.name" [value]="gender" formControlName="Gender"></p-radioButton>
+                                <label class="ml-2">{{ gender.name }}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-column m-2">
+                        <label for="Weight">Weight (kg) *</label>
+                        <input formControlName="Weight" id="Weight" placeholder="Enter the Weight" pInputText />
+                        <small *ngIf="patientForm['Weight'].invalid && isSubmitted" class="p-error"> Please fill in the blanks</small>
+                    </div>
+                    <div class="flex flex-column m-2">
+                        <label>Employment status</label>
+                        <p-dropdown formControlName="EmploymentStatus" [options]="EmploymentStatus" optionLabel="name"></p-dropdown>
+                    </div>
+
+                    <div class="flex flex-column m-2">
+                        <label for="Employer">Employer</label>
+                        <input formControlName="Employer" id="Employer" placeholder="Enter the Employer" pInputText />
+                        <small *ngIf="patientForm['Employer'].invalid && isSubmitted" class="p-error"> Please fill in the blanks</small>
+                    </div>
+                    <div class="flex flex-column m-2">
+                        <label for="BodyTemperature">Body Temperature (*C)</label>
+                        <input formControlName="BodyTemperature" id="BodyTemperature" placeholder=" BodyTemperature" pInputText />
+                        <small *ngIf="patientForm['BodyTemperature'].invalid && isSubmitted" class="p-error"> Please fill in the blanks</small>
+                    </div>
+                </div>
+                <div class="flex justify-content-between">
+                    <div class="flex flex-column m-2">
+                        <label>Admission *</label>
+                        <div class="card flex justify-content-center">
+                            <p-calendar [showIcon]="true" formControlName="Admission"></p-calendar>
+                        </div>
+                    </div>
+                    <div class="flex flex-column m-2">
+                        <label for="BloodPressure">Blood pressure (mm HG)</label>
+                        <input formControlName="BloodPressure" id="BloodPressure" placeholder="BloodPressure" pInputText />
+                        <small *ngIf="patientForm['BloodPressure'].invalid && isSubmitted" class="p-error"> Please fill in the blanks</small>
+                    </div>
+                    <div class="flex flex-column m-2">
+                        <label for="Occupation">Occupation</label>
+                        <input formControlName="Occupation" id="Occupation" placeholder="Enter the Occupation" pInputText />
+                        <small *ngIf="patientForm['Occupation'].invalid && isSubmitted" class="p-error"> Please fill in the blanks</small>
+                    </div>
+                    <div class="flex flex-column m-2">
+                        <label>Diagnosis</label>
+                        <p-dropdown formControlName="Diagnosis" [options]="Diagnosis" optionLabel="name"></p-dropdown>
+                    </div>
+                    <div class="flex flex-column m-2">
+                        <label for="Religion">Religion</label>
+                        <input formControlName="Religion" id="Religion" placeholder="Enter the Religion" pInputText />
+                        <small *ngIf="patientForm['Religion'].invalid && isSubmitted" class="p-error"> Please fill in the blanks</small>
+                    </div>
+                </div>
+                <div class="flex">
+                    <div class="flex flex-column m-2">
+                        <label>Date of birth *</label>
+                        <div class="card flex justify-content-center">
+                            <p-calendar [showIcon]="true" formControlName="Dob"></p-calendar>
+                        </div>
+                    </div>
+                    <div class="flex flex-column m-2">
+                        <label for="ChronicCondition">ChronicCondition</label>
+                        <input formControlName="ChronicCondition" id="ChronicCondition" placeholder="Enter the ChronicCondition" pInputText />
+                        <small *ngIf="patientForm['ChronicCondition'].invalid && isSubmitted" class="p-error"> Please fill in the blanks</small>
+                    </div>
+                    <div class="flex flex-column m-2">
+                        <label for="Nationality">Nationalty</label>
+                        <input formControlName="Nationality" id="Nationality" placeholder="Enter the Nationality" pInputText />
+                        <small *ngIf="patientForm['Nationality'].invalid && isSubmitted" class="p-error"> Please fill in the blanks</small>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</p-card>

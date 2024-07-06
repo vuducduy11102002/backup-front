@@ -1,0 +1,133 @@
+/* weekly-calendar.component.css */
+
+.weekly-calendar {
+    font-family: 'Arial', sans-serif;
+    width: 1250px; /* Tăng chiều rộng cho phù hợp với nội dung mới */
+    margin: 0 auto;
+    padding: 20px; /* Thêm padding cho nội dung bên trong */
+    background-color: #fff; /* Màu nền trắng */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Đổ bóng để làm nổi bật */
+
+    .header-calendar {
+        margin-top: 10px;
+        display: flex;
+        // justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px; /* Tăng margin bottom */
+
+        .previous {
+            border-radius: 5%;
+            background: linear-gradient(#43b9dc, #34d3b4);
+            cursor: pointer;
+            color: white;
+        }
+        .previous:hover {
+            transition: transform 0.4s ease-in-out;
+            transform: scale(0.9);
+            border-radius: 5%;
+            background: linear-gradient(#43b9dc, #34d3b4);
+            cursor: pointer;
+            color: white;
+        }
+        .today {
+            border-radius: 5%;
+            background: linear-gradient(#44889d, #2fad94);
+            cursor: pointer;
+            color: white;
+        }
+        .today:hover {
+            transition: transform 0.4s ease-in-out;
+            transform: scale(0.9);
+            border-radius: 5%;
+            background: linear-gradient(#44889d, #2fad94);
+            cursor: pointer;
+            color: white;
+        }
+        .next {
+            border-radius: 5%;
+            background: linear-gradient(#43b9dc, #34d3b4);
+            cursor: pointer;
+            color: white;
+        }
+        .next:hover {
+            transition: transform 0.4s ease-in-out;
+            transform: scale(0.9);
+            border-radius: 5%;
+            background: linear-gradient(#43b9dc, #34d3b4);
+            cursor: pointer;
+            color: white;
+        }
+    }
+
+    button {
+        margin-right: 5px;
+        padding: 8px; /* Tăng padding */
+        font-size: 16px; /* Tăng kích thước font */
+    }
+
+    h2 {
+        margin: 0;
+        font-size: 24px; /* Tăng kích thước font */
+    }
+
+    .days {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 20px; /* Tăng khoảng cách giữa các ngày */
+    }
+
+    .day-header,
+    .day {
+        text-align: center;
+        border-radius: 10px; /* Tăng độ cong của góc */
+    }
+
+    .day-header {
+        font-weight: bold;
+        color: #333;
+        padding: 15px; /* Tăng padding */
+        background-color: #f2f2f2;
+        margin-bottom: 10px; /* Tăng khoảng cách giữa các ngày */
+    }
+
+    .day {
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        padding: 15px; /* Tăng padding */
+        background-color: #f8f8f8;
+    }
+
+    .day:hover {
+        background-color: #ddd;
+    }
+
+    .time-slot {
+        margin: 10px 0; /* Tăng khoảng cách giữa các time slot */
+        padding: 15px;
+        border-radius: 5px;
+    }
+
+    .morning,
+    .afternoon,
+    .evening {
+        margin: 5px 0;
+        padding: 15px 0px 150px 0px;
+        border-radius: 5px;
+        color: #fff; /* Màu chữ trắng để tăng độ đối lập */
+    }
+
+    .morning {
+        font-size: 12px;
+        background-color: #4caf50; /* Màu xanh lá cây */
+    }
+
+    .afternoon {
+        font-size: 12px;
+        background-color: #ffc107; /* Màu vàng */
+    }
+
+    .evening {
+        font-size: 12px;
+        background-color: #e53935; /* Màu đỏ */
+    }
+}

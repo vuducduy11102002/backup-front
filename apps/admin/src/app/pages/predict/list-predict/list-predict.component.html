@@ -1,0 +1,66 @@
+<div class="list-predict">
+  <div class="timetable">
+    <div class="date-pickle">
+      <input type="date" [(ngModel)]="selectedDate" (change)="dateSelected()" />
+    </div>
+    <div class="controls">
+      <button (click)="previousWeek()">Previous</button>
+      <button (click)="nextWeek()">Next</button>
+    </div>
+    <div class="controls">
+      <button (click)="setDayOfWeek(0, selectedDate)">Monday</button>
+      <button (click)="setDayOfWeek(1, selectedDate)">Tuesday</button>
+      <button (click)="setDayOfWeek(2, selectedDate)">Wednesday</button>
+      <button (click)="setDayOfWeek(3, selectedDate)">Thursday</button>
+      <button (click)="setDayOfWeek(4, selectedDate)">Friday</button>
+      <button (click)="setDayOfWeek(5, selectedDate)">Saturday</button>
+      <button (click)="setDayOfWeek(6, selectedDate)">Sunday</button>
+    </div>
+
+    <div
+      class="predict-table"
+      *ngIf="predict && predict.length > 0; else noData"
+    >
+      <div>
+        <ng-container *ngFor="let predictItem of predict">
+          <div
+            class="predict-out_come"
+            [ngStyle]="{
+              color: 'black',
+              'background-color': predictItem.out_come?.[0] === 1 ? 'lightpink' : 'lightblue'
+            }"
+          >
+            <div class="patientName">
+              patientName: {{ predictItem.patientName }}
+            </div>
+            <div class="predict">predict: {{ predictItem.out_come }}</div>
+            <div class="datevtime">
+              date: {{ predictItem.createdAt | date : 'yyyy-MM-dd' }}
+              <br />
+              time: {{ predictItem.createdAt | date : 'hh:mm:ss' }}
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <ng-template #noData>
+      <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th>Patient Name</th>
+            <th>Prediction</th>
+            <th>Date</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="4" class="text-center text-muted py-3">
+              No data available
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-template>
+  </div>
+</div>

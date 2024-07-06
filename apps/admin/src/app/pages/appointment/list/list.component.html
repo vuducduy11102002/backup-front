@@ -1,0 +1,87 @@
+<p-toast></p-toast>
+<div class="admin-page">
+  <p-card header="Appointment" subheader="List of all Appointments">
+    <div class="grid">
+      <div class="col-12">
+        <p-toolbar>
+          <div class="p-toolbar-group-left">
+            <p-button
+              styleClass="p-button-success"
+              label="New"
+              icon="pi pi-plus"
+              routerLink="form"
+            ></p-button>
+          </div>
+        </p-toolbar>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="col-12">
+        <p-table
+          [paginator]="true"
+          [rows]="10"
+          [value]="pointment"
+          styleClass="p-datatable-gridlines"
+          [globalFilterFields]="['name']"
+        >
+          <ng-template pTemplate="header">
+            <tr>
+              <th pSortableColumn="id">
+                id <p-sortIcon field="id"></p-sortIcon>
+              </th>
+              <th pSortableColumn="patient">
+                Patient <p-sortIcon field="patient"></p-sortIcon>
+              </th>
+              <th pSortableColumn="doctor">
+                Doctor <p-sortIcon field="doctor"></p-sortIcon>
+              </th>
+              <th pSortableColumn="type">
+                Type <p-sortIcon field="type"></p-sortIcon>
+              </th>
+              <th pSortableColumn="date">
+                Date <p-sortIcon field="date"></p-sortIcon>
+              </th>
+              <th pSortableColumn="time">
+                Time <p-sortIcon field="time"></p-sortIcon>
+              </th>
+              <th pSortableColumn="timeslot">
+                timeSlot <p-sortIcon field="timeslot"></p-sortIcon>
+              </th>
+              <th pSortableColumn="app_desc">
+                Appointment_description
+                <p-sortIcon field="app_desc"></p-sortIcon>
+              </th>
+              <th pSortableColumn="create_date">
+                created_date <p-sortIcon field="create_date"></p-sortIcon>
+              </th>
+              <th></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-pointments>
+            <tr>
+              <td>{{ pointments.id }}</td>
+              <td>{{ pointments.patient.PatientName }}</td>
+              <td>{{ pointments.doctor.name }}</td>
+              <td>{{ pointments.type }}</td>
+              <td>{{ pointments.date }}</td>
+              <td>{{ pointments.time }}</td>
+              <td>{{ pointments.timeSlot }}</td>
+              <td>{{ pointments.app_desc }}</td>
+              <td>{{ pointments.created_date | date : 'short' }}</td>
+
+              <td>
+                <!-- <p-button (click)="deleteDoctor(doctor.id)" styleClass="p-button-danger p-mr-2" icon="pi pi-trash"></p-button>
+                                <p-button (click)="updateDoctor(doctor.id)" styleClass="p-button-success" icon="pi pi-pencil"></p-button> -->
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+  </p-card>
+</div>
+<p-confirmDialog
+  [style]="{ width: '50vw' }"
+  [baseZIndex]="10000"
+  rejectButtonStyleClass="p-button-text"
+></p-confirmDialog>

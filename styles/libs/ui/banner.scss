@@ -1,0 +1,53 @@
+.main-image {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    margin-top: 75px;
+    height: 100vh;
+}
+.container {
+    background: url(~/assets/headerimage.png);
+    width: 100%;
+    padding-top: 8.5rem;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    .main-text {
+        width: 50%;
+        position: absolute;
+        top: 200px;
+        padding: 0 2rem;
+        text-align: center;
+    }
+    .main-text h2 {
+        font-size: 40px;
+        color: $fontcolor;
+        padding-bottom: 1.5rem;
+    }
+    .main-text {
+        button {
+            font-weight: bolder;
+            padding: 1.5rem 3.5rem;
+            background: $backgroundcolor;
+            color: white;
+            border-radius: 10px;
+            border: 1px solid white;
+            cursor: pointer;
+        }
+    }
+    .main-text {
+        button:hover {
+            font-weight: bolder;
+            padding: 1.5rem 3.5rem;
+            background-color: rgb(132, 220, 220);
+            color: rgb(22, 20, 20);
+            border-radius: 10px;
+            border: 1px solid white;
+            cursor: pointer;
+
+            transition: background-color 0.3s ease-in-out;
+        }
+    }
+}

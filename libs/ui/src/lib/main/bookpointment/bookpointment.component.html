@@ -1,0 +1,167 @@
+<p-toast [style]="{ top: '100px' }"></p-toast>
+<div class="appointment">
+  <div class="pointment">
+    <form [formGroup]="form">
+      <div class="form">
+        <h3>
+          To schedule an appointment with a Primary Care Provider or Specialist,
+          please use Find A Doctor. For immediate assistance, please call (201)
+          821-8900.
+        </h3>
+        <div class="fill-text">
+          <span class="p-float-label">
+            <input pInputText id="name" formControlName="name" type="text" />
+            <label htmlFor="name">FullName</label>
+          </span>
+          <small
+            class="p-error"
+            *ngIf="formControls['name'].invalid && isSubmitted"
+            >Name is required</small
+          >
+        </div>
+        <div class="fill-text">
+          <span class="p-float-label">
+            <input pInputText id="email" formControlName="email" type="text" />
+            <label htmlFor="email">Email</label>
+          </span>
+          <small
+            class="p-error"
+            *ngIf="formControls['email'].invalid && isSubmitted"
+            >Email is required</small
+          >
+        </div>
+        <div class="fill-text">
+          <span class="p-float-label">
+            <input
+              pInputText
+              id="phone"
+              formControlName="phone"
+              type="text"
+              pattern="0[0-9]{9}$"
+              required
+            />
+            <label htmlFor="phone">Phone (0973628663)</label>
+          </span>
+          <small
+            class="p-error"
+            *ngIf="formControls['phone'].invalid && isSubmitted"
+            >Phone is required or you must fill the format like
+            0973628663</small
+          >
+        </div>
+        <div class="fill-text">
+          <label htmlFor="dob" style="color: rgb(64, 64, 64)"
+            >Date of Birth</label
+          >
+          <span class="p-float-label">
+            <input pInputText id="dob" formControlName="dob" type="date" />
+          </span>
+          <small
+            class="p-error"
+            *ngIf="formControls['dob'].invalid && isSubmitted"
+            >Date of birth is required</small
+          >
+        </div>
+
+        <div class="fill-text">
+          <span class="p-float-label">
+            <input
+              pInputText
+              id="gender"
+              formControlName="gender"
+              type="text"
+            />
+            <label htmlFor="gender">Gender</label>
+          </span>
+          <small
+            class="p-error"
+            *ngIf="formControls['gender'].invalid && isSubmitted"
+            >Gender is required</small
+          >
+        </div>
+
+        <div class="fill-text">
+          <label htmlFor="date" style="color: rgb(64, 64, 64)">Date</label>
+          <span class="p-float-label">
+            <input pInputText id="date" formControlName="date" type="date" />
+          </span>
+          <small
+            class="p-error"
+            *ngIf="formControls['date'].invalid && isSubmitted"
+            >Date is required</small
+          >
+        </div>
+        <div class="fill-text">
+          <span class="p-float-label">
+            <p-dropdown
+              formControlName="timeSlot"
+              [options]="timeSlot"
+              optionLabel="name"
+            ></p-dropdown>
+          </span>
+          <small
+            class="p-error"
+            *ngIf="formControls['timeSlot'].invalid && isSubmitted"
+            >TimeSlot is required</small
+          >
+        </div>
+        <div class="fill-text">
+          <span class="p-float-label">
+            <input pInputText id="time" formControlName="time" type="time" />
+          </span>
+          <small
+            class="p-error"
+            *ngIf="formControls['time'].invalid && isSubmitted"
+            >Time is required</small
+          >
+        </div>
+        <div class="fill-text">
+          <span class="p-float-label">
+            <input
+              pInputText
+              id="address"
+              formControlName="address"
+              type="text"
+            />
+            <label htmlFor="address">Address</label>
+          </span>
+          <small
+            class="p-error"
+            *ngIf="formControls['address'].invalid && isSubmitted"
+            >Address is required</small
+          >
+        </div>
+        <div class="fill-text">
+          <span class="p-float-label">
+            <p-dropdown
+              [options]="doctors"
+              placeholder="Choose a Doctor you want to appointment"
+              optionLabel="name"
+              inputId="float-label"
+              formControlName="doctor"
+            ></p-dropdown>
+            <label for="float-label">Doctor</label>
+          </span>
+          <small
+            class="p-error"
+            *ngIf="formControls['doctor'].invalid && isSubmitted"
+            >doctor is required</small
+          >
+        </div>
+        <div class="fill-text">
+          <span class="p-float-label">
+            <button
+              type="button"
+              pButton
+              pRipple
+              (click)="onSubmit()"
+              label="Submit"
+              class="p-button-success"
+            ></button>
+          </span>
+        </div>
+      </div>
+    </form>
+  </div>
+  <libs-calendar></libs-calendar>
+</div>

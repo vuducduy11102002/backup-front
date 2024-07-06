@@ -1,0 +1,43 @@
+<div class="csv-files">
+  <h2>CSV Files</h2>
+  <form [formGroup]="calendarForm">
+    <label for="date">Select Date:</label>
+    <input type="date" id="date" formControlName="date" />
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th *ngFor="let day of getWeekDays()">
+          {{ getDayOfWeek(day) }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td *ngFor="let day of getWeekDays()">
+          <div>{{ day.format('MMM DD') }}</div>
+          <ul>
+            <li *ngFor="let file of getCsvFilesForDate(day)">
+              <div class="file-info">
+                <span class="file-name">{{ file.name }}</span>
+              </div>
+              <div class="file-actions">
+                <button (click)="viewCsvContent(file.name)">View</button>
+                <button (click)="downloadCsv(file.name)">Download</button>
+              </div>
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="showDialog" class="dialog-overlay" (click)="closeDialog()">
+    <div class="dialog-content" (click)="$event.stopPropagation()">
+      <h3>{{ selectedFileName }}</h3>
+      <pre>{{ selectedFileContent }}</pre>
+      <button (click)="closeDialog()">Close</button>
+    </div>
+  </div>
+</div>

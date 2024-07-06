@@ -1,0 +1,80 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50vh; /* Sử dụng 100vh để đảm bảo chiều cao là 100% của viewport */
+}
+
+.authentication-form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 300px; /* Đặt chiều rộng của authentication form */
+  .do-not-touch {
+    cursor: default;
+    pointer-events: none;
+    color: #666;
+    font-size: 16px;
+    border-color: #fff;
+  }
+  .otp-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .otp-input {
+    width: 30px; // Độ rộng của mỗi ô vuông
+    height: 30px; // Chiều cao của mỗi ô vuông
+    text-align: center;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 5px; // Khoảng cách giữa các ô vuông
+  }
+
+  .otp-input:last-child {
+    margin-right: 0; // Loại bỏ khoảng cách cho ô cuối cùng
+  }
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+p {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #666;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 8px;
+  color: #333;
+}
+
+input {
+  padding: 10px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 10px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
